@@ -5,7 +5,7 @@ html {
     -webkit-text-size-adjust: 100%
 }
 
-body{
+body {
     height: 100vh;
     width: 100%;
     background-color: #141414;
@@ -15,7 +15,7 @@ body{
 }
 
 /* ----------------------------- NAV BAR -------------------------------*/
-nav{
+nav {
     z-index: 9;
     background-color: transparent;
     display: flex;
@@ -26,7 +26,7 @@ nav{
     border-color: wheat;
 }
 
-.nav-bar a{
+.nav-bar a {
     margin-left: 10px;
     font-weight: 300;
     color: #d8dcda;
@@ -37,13 +37,14 @@ nav a:hover {
     color: #949494;
     transition: 0.5s;
 }
-nav img{
+
+nav img {
     width: 10%;
 }
 
 /* ----------------------------------- END NAV BAR ------------------------------------------*/
 /* ----------------------------------- BEST MOVIES SECTION ----------------------------------*/
-#best_movie {
+#the_best_rating {
     display: block;
     height: 45%;
     width: 80%;
@@ -54,7 +55,7 @@ nav img{
     background-color: transparent;
 }
 
-#best_movie_content {
+#the_best_ranting_content {
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
@@ -71,28 +72,28 @@ nav img{
     margin-left: 30px;
 }
 
-#best_movie_resume {
+#the_best_rating_description_container {
     margin-left: 20px;
     height: 500px;
     width: 400px;
 }
 
-#best_movie_resume h1 {
+#the_best_rating_description h1 {
     font-size: 25px;
     font-weight: bold;
 }
 
 #btn-best-movie {
-    margin-left: 0px;
+    margin-left: 0;
 }
 
-#best_movie_title h1{
+#the_best_rating_title h1 {
     font-size: 25px;
     font-weight: bold;
 }
 
 
-.best_movie_modal {
+.best_rating_modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     align-items: center;
@@ -105,11 +106,11 @@ nav img{
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-.best_movie_modal_content {
+.best_rating_modal_content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -123,40 +124,40 @@ nav img{
     height: 40%;
 }
 
-
-.best_movie_close {
-    color: #d7d7d7;
+.best_rating_close {
     float: right;
+    color: #d7d7d7;
     font-size: 28px;
     font-weight: bold;
 }
 
-.best_movie_close:hover,
-.best_movie_close:focus {
+.best_rating_close:hover,
+.best_rating_close:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
 }
 
-#best_movie_img img {
+#best_rating_img img {
     max-height: 100%;
     height: auto;
 }
 
-#best_movie_infos_1 {
+#best_rating_infos_1 {
     max-width: 40%;
     margin-left: 2%;
 }
 
 
 /* ----------------------------------- END BEST MOVIES SECTION ----------------------------------*/
+/* ------------------------------------- ALL CAROUSSEL SECTION ----------------------------------*/
 #all_cat {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-.carousel-container {
+.best_rating_carousel-container, .action_carousel-container, .sci_fi_carousel-container, .crime_carousel-container {
     width: 59%;
     margin: 50px auto;
 
@@ -164,21 +165,25 @@ nav img{
     position: relative;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
     .carousel-inner {
         width: 30%;
     }
 }
-.carousel-container .carousel-inner {
-       overflow: hidden;
+
+.best_rating_carousel-container .carousel-inner, .action_carousel-container .carousel-inner,
+.sci_fi_carousel-container .carousel-inner, .crime_carousel-container .carousel-inner {
+    overflow: hidden;
 }
 
-.carousel-container .track {
+.best_rating_carousel-container .track_best_rating, .action_carousel-container .track_action,
+.sci_fi_carousel-container .track_sci_fi, .crime_carousel-container .track_crime {
     display: inline-flex;
     transition: transform 0.3s;
 }
 
-.carousel-container .card-container {
+.best_rating_carousel-container .card-container, .action_carousel-container .card-container,
+.sci_fi_carousel-container .card-container, .crime_carousel-container .card-container {
     flex-shrink: 0;
     width: 192px;
     height: 268px;
@@ -186,7 +191,9 @@ nav img{
     padding-right: 15px;
     box-sizing: border-box;
 }
-.carousel-container .card-container .card {
+
+.best_rating_carousel-container .card-container .card, .action_carousel-container .card-container .card,
+.sci_fi_carousel-container .card-container .card, .crime_carousel-container .card-container .card {
     width: 100%;
     height: 100%;
     border-radius: 5px;
@@ -197,14 +204,16 @@ nav img{
 }
 
 .card > * {
-  flex: 1;
+    flex: 1;
 }
+
 .card .img {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 30px;
 }
+
 .card .title {
     display: flex;
     align-items: center;
@@ -235,7 +244,7 @@ nav img{
     cursor: pointer;
 }
 
-.nav-btn .prev {
+.nav-btn .best_rating_prev, .action_prev, .sci_fi_prev, .crime_prev {
     border: 0;
     border-radius: 50px;
     left: -40px;
@@ -243,52 +252,86 @@ nav img{
     display: none;
 }
 
-.nav-btn .prev.show {
+.nav-btn .best_rating_prev.show, .action_prev.show, .sci_fi_prev.show, .crime_prev.show {
     display: block;
 }
 
 
-.nav-btn .next {
+.nav-btn .best_rating_next, .action_next, .sci_fi_next, .crime_next {
     border: 0;
     border-radius: 50px;
     right: -40px;
     background: rgba(0, 0, 0, 0.78);
 }
 
-.nav-btn .next.hide {
+.nav-btn .best_rating_next.hide, .action_next.hide, .sci_fi_next.hide, .crime_next.hide {
     display: none;
 }
 
-
-/*
-#adult {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    margin-left: 4%;
-    margin-right: 4%;
-
+.cat_title {
+    margin-left: 20%;
 }
 
-#sci-fi {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    margin-left: 4%;
-    margin-right: 4%;
+/* ----------------------------------- END CAROUSSEL SECTION ----------------------------------*/
+/* --------------------------------------- GENERIC MODAL --------------------------------------*/
 
+.generic_modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    align-items: center;
+    justify-content: center;
+    min-height: 800px;
+    min-width: 400px;
+    z-index: 9; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
-#crime {
+.generic_modal_content {
     display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-    margin-left: 4%;
-    margin-right: 4%;
-
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #333333;
+    opacity: 0.8;
+    margin: 2% 2% 2% 2%;
+    padding: 20px;
+    border: 1px solid #d7d7d7;
+    border-radius: 8px 8px 8px 8px;
+    width: 80%;
+    height: 40%;
 }
-*/
-/* -------------------------------------- ALL BTN ---------------------------------*/
+
+
+.generic_modal_close {
+    margin-left: 50px;
+    color: #d7d7d7;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.generic_modal_close:hover,
+.generic_modal_close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#generic_modal_img img {
+    max-height: 100%;
+    height: auto;
+}
+
+#generic_modal_infos_1 {
+    max-width: 40%;
+    margin-left: 2%;
+}
+
+/* ------------------------------------------ ALL BTN -----------------------------------------*/
 
 #btn-infos, #btn-play {
     flex-wrap: nowrap;
@@ -309,6 +352,7 @@ nav img{
 #btn-play:hover {
     background-color: #949494;
 }
+
 #btn-infos:hover {
     background-color: #949494;
 }
