@@ -187,7 +187,7 @@ function toTheNext (next, prev, track, x_index, width) {
     //console.log('tothenext:' + next + prev + track + x_index);
     x_index++;
     prev.classList.add('show');
-    track.style.transform = `translateX(-${(x_index * width * 80) / 100 }px)`; //index * carouselWidth - 400
+    track.style.transform = `translateX(-${(x_index * width * 80) / 200 }px)`; //index * carouselWidth - 400
     if (track.offsetWidth - (x_index * width) < width) {
         next.classList.add('hide');
     }
@@ -201,7 +201,7 @@ function toThePrev (next, prev, track, x_index, width) {
     if(x_index === 0) {
         prev.classList.remove('show');
     }
-    track.style.transform = `translateX(${x_index * width + 300}px)`;
+    track.style.transform = `translateX(${x_index * width + 200}px)`;
     return x_index;
 }
 
