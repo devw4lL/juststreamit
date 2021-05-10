@@ -25,12 +25,8 @@ let allResults = [
     [], // crime
 ]
 
-let allModalsInfos = [
-
-]
 
 function main() {
-    console.log('start API');
     allUrls.forEach((url_value, url_index) => {
         getApiInfos(url_value[0], url_index,5);
         getApiInfos(url_value[1], url_index,2);
@@ -39,23 +35,16 @@ function main() {
 }
 
 function getApiInfos(url_value, index, max_get) {
-    console.log('start_getApiInfos' + url_value);
     fetch(url_value)
         .then(response => response.json())
         .then( data => {
-            //console.log(data)
             for (let element = 0; element < max_get; element++) { // element by cat
-                //console.log(data.results[element]);
-                //console.log(data.results[element]['id'])
                 fetch(base_url + data.results[element]['id']) // get more infos by ids
                     .then(response => response.json())
                     .then(data => {
-                        //console.log(data)
                         allResults[index].push(data);
                         if(index === 3 && allResults[0].length === 7 && allResults[1].length === 7
                             && allResults[2].length === 7 && allResults[3].length === 7) { // Fetch finish
-                            //console.log('bip');
-                            //console.log(allResults);
                             fillTheBestRating(allResults);
                             fillAllCategory(allResults);
                             fillAllModals(allResults);
@@ -96,14 +85,9 @@ function fillTheBestRating(results) {
 }
 
 function fillAllCategory(results) {
-    console.log('fill_all')
     let max_series_view = 6;
     allCategories.forEach((category, index) => {
-        //console.log(category);
         for (let imageCounter = 0; imageCounter <= max_series_view; imageCounter++) {
-            //console.log(`${results[index][imageCounter].image_url}`)
-            //console.log(`${category}_${imageCounter}`)
-            //console.log(`${category}_title_${imageCounter}`)
             let carouselImage = document.querySelector(`${category}_${imageCounter}`);
             let carouselTitle = document.querySelector(`${category}_title_${imageCounter}`);
             carouselImage.style.backgroundImage = `url(${results[index][imageCounter].image_url})`;
@@ -112,98 +96,7 @@ function fillAllCategory(results) {
     })
 }
 
-function fillAllModals(results) {
 
-}
-
-/*------------------------------ CAROUSEL -------------------------------------*/
-
-let best_rating_prev = document.querySelector('.best_rating_prev');
-let best_rating_next = document.querySelector('.best_rating_next');
-let track_best_rating = document.querySelector('.track_best_rating');
-
-let action_prev = document.querySelector('.action_prev');
-let action_next = document.querySelector('.action_next');
-let track_action = document.querySelector('.track_action');
-
-let sci_fi_prev = document.querySelector('.sci_fi_prev');
-let sci_fi_next = document.querySelector('.sci_fi_next');
-let track_sci_fi = document.querySelector('.track_sci_fi');
-
-let crime_prev = document.querySelector('.crime_prev');
-let crime_next = document.querySelector('.crime_next');
-let track_crime = document.querySelector('.track_crime');
-
-let best_rating_width = document.querySelector('.best_rating_carousel-container').offsetWidth;
-let action_width = document.querySelector('.action_carousel-container').offsetWidth;
-let sci_fi_width = document.querySelector('.sci_fi_carousel-container').offsetWidth;
-let crime_width = document.querySelector('.crime_carousel-container').offsetWidth;
-
-let best_index = 0;
-let action_index = 0;
-let sci_fi_index = 0;
-let crime_index = 0;
-
-//Resize carousel when windows change
-window.addEventListener('resize', () => {
-    carouselWidth = document.querySelector('.best_rating_carousel-container.action_carousel-container.sci_fi_carousel-container.crime_carousel-container').offsetWidth;
-})
-
-
-best_rating_next.addEventListener('click', () => {
-    best_index = toTheNext(best_rating_next, best_rating_prev, track_best_rating, best_index, best_rating_width);
-})
-
-best_rating_prev.addEventListener('click', () => {
-    best_index = toThePrev(best_rating_next, best_rating_prev, track_best_rating, best_index, best_rating_width);
-})
-
-action_next.addEventListener('click', () => {
-    action_index = toTheNext(action_next, action_prev, track_action, action_index, action_width);
-})
-
-action_prev.addEventListener('click', () => {
-    action_index = toThePrev(action_next, action_prev, track_action, action_index, action_width);
-})
-
-sci_fi_next.addEventListener('click', () => {
-    sci_fi_index = toTheNext(sci_fi_next, sci_fi_prev, track_sci_fi, sci_fi_index, sci_fi_width);
-
-})
-
-sci_fi_prev.addEventListener('click', () => {
-    sci_fi_index = toThePrev(sci_fi_next, sci_fi_prev, track_sci_fi, sci_fi_index, sci_fi_width);
-})
-
-crime_next.addEventListener('click', () => {
-    crime_index = toTheNext(crime_next, crime_prev, track_crime, crime_index, crime_width);
-})
-
-crime_prev.addEventListener('click', () => {
-    crime_index = toThePrev(crime_next, crime_prev, track_crime, crime_index, crime_width);
-})
-
-function toTheNext (next, prev, track, x_index, width) {
-    //console.log('tothenext:' + next + prev + track + x_index);
-    x_index++;
-    prev.classList.add('show');
-    track.style.transform = `translateX(-${(x_index * width * 80) / 200 }px)`; //index * carouselWidth - 400
-    if (track.offsetWidth - (x_index * width) < width) {
-        next.classList.add('hide');
-    }
-    return x_index;
-}
-
-function toThePrev (next, prev, track, x_index, width) {
-    //console.log('totheprev:' + next + prev + track + x_index);
-    x_index--;
-    next.classList.remove('hide');
-    if(x_index === 0) {
-        prev.classList.remove('show');
-    }
-    track.style.transform = `translateX(${x_index * width + 200}px)`;
-    return x_index;
-}
 
 /*-----------------------------BEST RATING MODAL----------------------------------------*/
 
@@ -218,18 +111,15 @@ btn.onclick = function() {
 
 bk_img.onclick = function() {
     modal.style.display = "flex";
-    //console.log('open')
 }
 
 span.onclick = function() {
   modal.style.display = "none";
-  //console.log('span')
 }
 
 window.onclick = function(event) {
   if (event.target === modal) {
     modal.style.display = "none";
-    //console.log('windows click')
   }
 }
 
@@ -240,13 +130,11 @@ let generic_span = document.getElementsByClassName('generic_modal_close')[0];
 
 generic_span.onclick = function() {
   generic_modal.style.display = "none";
-  //console.log('span')
 }
 
 window.onclick = function(event) {
   if (event.target === generic_modal) {
     modal.style.display = "none";
-    //console.log('windows click')
   }
 }
 
@@ -261,9 +149,6 @@ for (let i = 0; i < movies.length; i++) {
 }
 
 function genericModal (cat_id, data_id) {
-    //console.log(cat_id + '   ' + data_id)
-    //console.log(allResults[cat_id][data_id])
-    //console.log(allResults[cat_id][data_id].image_url)
     document.querySelector('#generic_modal_img_img').src = `${allResults[cat_id][data_id].image_url}`;
     document.querySelector('#generic_modal_title').innerHTML = `Genres:&nbsp;&nbsp;${allResults[cat_id][data_id].title}`;
     document.querySelector('#generic_modal_genre').innerHTML = `Genres:&nbsp;&nbsp;${allResults[cat_id][data_id].genres}`;
