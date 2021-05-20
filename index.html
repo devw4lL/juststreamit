@@ -7,16 +7,15 @@
     <link rel="stylesheet" href="css/style.css">
     <link HREF="https://assets.nflxext.com/ffe/siteui/fonts/netflix-sans/v3/NetflixSans_W_Blk.woff2" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e0f6d4b4cd.js" crossorigin="anonymous"></script>
+    <script src="static/js/script.js" defer></script>
+    <script src="static/js/carousel.js" defer></script>
 </head>
-<header>
-
-</header>
 <body id="home">
-<script src="static/js/script.js" defer></script>
-<script src="static/js/carousel.js" defer></script>
+<header>
+</header>
 <div class="nav-bar">
     <nav>
-        <img src="img/logo_juststream_it.png"/>
+        <img src="img/logo_juststream_it.png" alt=""/>
         <a href="#home">Acceuil</a>
         <a href="#best_ratings">Meilleur score</a>
         <a href="#action">Action</a>
@@ -30,14 +29,14 @@
         <button id="btn-play"><i class="fas fa-play"></i>&nbsp;&nbsp;Lecture</button>
         <button id="btn-infos"><i class="fas fa-info-circle"></i>&nbsp;&nbsp;Plus d'infos</button>
         <div id="the_best_rating_description_container">
-            <h1><p id="the_best_rating_title"></p></h1>
+            <h1 id="the_best_rating_title"></h1>
             <h1>Résumé</h1>
             <p id="the_best_rating_description"></p>
         </div>
     </div>
     <div id="my_best_rating_modal" class="best_rating_modal">
         <div class="best_rating_modal_content">
-            <div id="best_rating_img"><img id="best_rating_img_img" src="" alt=""></div>
+            <div id="best_rating_img"><img id="best_rating_img_img" src="#" alt=""></div>
             <div id="best_rating_infos_1">
                 <ul>
                     <li id="best_title"></li>
@@ -64,7 +63,7 @@
 <div>
     <div id="my_generic_modal" class="generic_modal">
         <div class="generic_modal_content">
-            <div id="generic_modal_img"><img id="generic_modal_img_img" src="" alt=""></div>
+            <div id="generic_modal_img"><img id="generic_modal_img_img" src="#" alt=""></div>
             <div id="generic_modal_infos_1">
                 <ul>
                     <li id="generic_modal_title"></li>
@@ -326,9 +325,8 @@
     </div>
 </div>
 
-
-</body>
 <footer>
 
 </footer>
+</body>
 </html>

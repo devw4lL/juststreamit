@@ -244,7 +244,7 @@ nav img {
     cursor: pointer;
 }
 
-.nav-btn .best_rating_prev, .action_prev, .sci_fi_prev, .crime_prev {
+.nav-btn .best_rating_prev, .nav-btn .action_prev, .nav-btn .sci_fi_prev, .nav-btn .crime_prev {
     border: 0;
     border-radius: 50px;
     left: -40px;
@@ -257,7 +257,7 @@ nav img {
 }
 
 
-.nav-btn .best_rating_next, .action_next, .sci_fi_next, .crime_next {
+.nav-btn .best_rating_next, .nav-btn .action_next, .nav-btn .sci_fi_next, .nav-btn .crime_next {
     border: 0;
     border-radius: 50px;
     right: -40px;
